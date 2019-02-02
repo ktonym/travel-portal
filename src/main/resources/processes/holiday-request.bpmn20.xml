@@ -14,12 +14,12 @@
             we expect a ${customerId} and ${email} process variable
         -->
 
-    <process id="signup-process" name="Signup a new user process" isExecutable="true">
+    <process id="signup-process" name="signup-process" isExecutable="true">
 
         <startEvent id="start" flowable:initiator="initiator"/>
         <sequenceFlow sourceRef="start" targetRef="confirm-email-task"/>
 
-        <userTask id="confirm-email-task" name="Confirm email" flowable:assignee="${initiator}"/>
+        <userTask id="confirm-email-task" name="confirm-email-task" flowable:assignee="${initiator}"/>
         <sequenceFlow sourceRef="confirm-email-task" targetRef="send-welcome-email-task"/>
 
         <serviceTask id="send-welcome-email-task" flowable:expression="#{emailService.sendWelcomeEmail(customerId,email)}"/>
